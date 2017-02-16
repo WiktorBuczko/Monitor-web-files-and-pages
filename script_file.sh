@@ -1,9 +1,9 @@
 #!/bin/bash
-URL=<URL of a file>
-timeb=<time in seconds between checks>
-mail=<your e-mail address>
-title=<title of an e-mail message>
-message=<your message in email>
+URL="<URL of a file>"
+timeb="<time in seconds between checks>"
+mail="<your e-mail address>"
+title="<title of an e-mail message>"
+message="<your message in email>"
 sizeold=`curl -sI $URL | grep Content-Length | awk '{print $2}'`
 sizenew=`curl -sI $URL | grep Content-Length | awk '{print $2}'`
 echo $sizeold
