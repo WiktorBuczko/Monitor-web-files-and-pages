@@ -16,4 +16,4 @@ sizenew=$(curl -sI $URL | grep Content-Length | awk '{print $2}')
 done
 echo $sizenew
 echo "Change noticed!"
-echo "Sending e-mail" | mail -s "$title" $mail <<< '$message'
+echo "Sending e-mail" | mail -s "$title" $mail <<< "$message"
