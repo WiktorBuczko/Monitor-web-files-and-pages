@@ -16,4 +16,4 @@ wyniknew=$(curl -so /dev/null $URL -w '%{size_download}')
 done
 echo $wyniknew
 echo "Change noticed!"
-echo "Sending e-mail" | mail -s "$title" wiktorusxxd@gmail.com <<< '$message'
+echo "Sending e-mail" | mail -s "$title" wiktorusxxd@gmail.com <<< "$message"
