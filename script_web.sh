@@ -2,18 +2,18 @@
 URL="<URL of a web page>"
 timeb="<time in seconds between checks>"
 mail="<your e-mail address>"
-title="<title of an e-mail message>"
-message="<your message in email>"
-wynikold=`curl -so /dev/null $URL -w '%{size_download}'`
-wyniknew=`curl -so /dev/null $URL -w '%{size_download}'`
-echo $wynikold
-echo $wyniknew
+old=`curl -so /dev/null $URL -w '%{size_download}'`
+new=`curl -so /dev/null $URL -w '%{size_download}'`
+echo $old
+echo $new
 
-while [ $wynikold == $wyniknew ]; do
-echo  czekam $timeb
+while [ $old == $new ]; do
+echo  waiting $timeb seconds
 sleep $timeb
-wyniknew=$(curl -so /dev/null $URL -w '%{size_download}')
+new=$(curl -so /dev/null $URL -w '%{size_download}')
 done
-echo $wyniknew
+echo $old vs
+echo $new
 echo "Change noticed!"
-echo "Sending e-mail" | mail -s "$title" wiktorusxxd@gmail.com <<< "$message"
+echo "Sending e-mail" 
+echo "Hey, there's something new" | ssmtp wiktorusxxd@gmail.com
